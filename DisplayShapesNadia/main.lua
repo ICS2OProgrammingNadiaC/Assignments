@@ -4,8 +4,14 @@
 -- This program displays shapes and their names under them on the Ipad 
 -----------------------------------------------------------------------------------------
 
--- Create local variable for vertices. 
-local vertices = { 50,-300, 6,-95, 99,-35}
+-- Create a new background colour.
+display.setDefault("background", 12/255, 100/255, 30/255)
+
+-- remove the status bar
+display.setStatusBar(display.HiddenStatusBar)
+
+-- Create a new variable.
+local verticesTri = { 50,-300, 6,-95, 99,-35}
  
 -- Create new shape, a triangle.
 local triangle = display.newPolygon( 100, 150, verticesTri )
