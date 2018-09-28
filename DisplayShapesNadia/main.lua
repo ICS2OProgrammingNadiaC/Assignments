@@ -26,10 +26,13 @@ triangle.strokeWidth = 10
 triangle:setStrokeColor(1, 0, 0)
 
 --display the text
-triangleText = display.newText("This is a triangle", 20, 20, 0, 0)
+triangleText = display.newText("This is a triangle", 100, 200, nil, 30)
 
 --anchor the text and set it's variables
 triangleText.anchorX = 0
 triangleText.anchorY = 0
-triangleText.x = 20
-triangleText.y = 20
+triangleText.x = 50
+triangleText.y = 300
+
+-- Change the text size
+local triangleTextSize = 50
