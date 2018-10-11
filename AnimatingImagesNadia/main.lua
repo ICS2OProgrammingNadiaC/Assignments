@@ -31,7 +31,7 @@ local backGroundImage = display.newImageRect("Images/hockeyArena.png", 2048, 155
 local hockeyPlayer1 = display.newImageRect("Images/hockeyPlayer1.png", 250, 300)
 local hockeyPlayer2 = display.newImageRect("Images/hockeyPlayer2.png", 250, 300)
 local hockeyPlayer3 = display.newImageRect("Images/hockeyPlayer3.png", 250, 300)
-local hockeyPuck = display.newImageRect("Images/hockeyPuck.png", 250, 300)
+local hockeyPuck = display.newImageRect("Images/hockeyPuck.png", 150, 200)
 
 -- set the inital x and y postions of each player
 hockeyPlayer1.x = 70
