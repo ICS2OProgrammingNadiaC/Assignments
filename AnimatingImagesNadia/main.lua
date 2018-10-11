@@ -14,14 +14,12 @@ scrollSpeed = 3
 -- add background with height and width 
 local backGroundImage = display.newImageRect("Images/hockeyArena.png", 2048, 1550)
 
--- print "Stanley Cup Final"
-print ("Stanley Cup Final!")
 
 -- create a local variable
 local textObject
 
 -- set x, y locations of the text
-textObject = display.newText("Stanley Cup Final!", 500, 500, nil, 50)
+textObject = display.newText( "Stanley Cup Final!", 500, 500, nil, 50 )
 
 -- set the colour of the text
 textObject:setTextColor(180/255, 100/255, 90/255)
@@ -33,6 +31,7 @@ local backGroundImage = display.newImageRect("Images/hockeyArena.png", 2048, 155
 local hockeyPlayer1 = display.newImageRect("Images/hockeyPlayer1.png", 250, 300)
 local hockeyPlayer2 = display.newImageRect("Images/hockeyPlayer2.png", 250, 300)
 local hockeyPlayer3 = display.newImageRect("Images/hockeyPlayer3.png", 250, 300)
+local hockeyPuck = display.newImageRect("Images/hockeyPuck.png", 250, 300)
 
 -- set the inital x and y postions of each player
 hockeyPlayer1.x = 70
@@ -41,50 +40,74 @@ hockeyPlayer1.y = display.contentHeight/2
 hockeyPlayer2.x = display.contentWidth/2
 hockeyPlayer2.y = 70
 
-hockeyPlayer3.x = display.contentWidth/1
-hockeyPlayer3.y = 150
+hockeyPlayer3.x = 1024
+hockeyPlayer3.y = 756
 hockeyPlayer3.xScale = -1
+
+hockeyPuck.x = 500
+hockeyPuck.y = 500
+
 
 
 -- set the player to start transparent
 hockeyPlayer1.alpha = 0
 
--- MoveHockeyPlayer1 will be called over and over again
+-- set scroll speed
+scrollSpeed = 3
+
+
+-- Function: MovehockeyPlayer1
+-- Input: this function accepts an event listener
+-- Output:  none
+-- Description: this function adds the scroll speed to the x- value of the ship
+local function MoveHockeyPlayer1(event)
+	-- add the scroll speed to the x-value of the ship
+	hockeyPlayer1.x = hockeyPlayer1.x + scrollSpeed
+	-- change the transparency so that it becomes gradually visable
+	hockeyPlayer1.alpha = hockeyPlayer1.alpha + 0.01
+end
+
+-- MovehockeyPlayer1 will be called over and over again
 Runtime:addEventListener("enterFrame", MoveHockeyPlayer1)
 
 
 
 
--- Function: HockeyPlayer1Listener 
--- Input: touch listener
--- Output: none
--- Description: when blue girl is touched, move her
-local function HockeyPlayer2Listener(touch)
-
-	if (touch.phase == "began") then
-		if (alreadyTouchedHockeyPlayer3 == false)
-		   (alreadyTouchedHockeyPlayer2 == false) then 
-			alreadyTouchedHockeyPlayer1 == true)
-		end
-	end
-
-	if ( (touch.phase == "moved") and (alreadyTouchedHockeyPlayer1 == true) ) then
-	   hockeyPlayer2.x = touch.x
-	   hockeyPlayer2.y = touch.y
-	end
-
-	if (touch.phase == "ended") then
-	   alreadyTouchedHockeyPlayer2 = false
-	   alreadyTouchedHockeyPlayer3 = false
-	   alreadyTouchedHockeyPlayer1 = false
-	end
+-- Function: MovehockeyPlayer2
+-- Input: this function accepts an event listener
+-- Output:  none
+-- Description: this function adds the scroll speed to the x- value of the ship
+local function MoveHockeyPlayer2(event)
+	-- add the scroll speed to the x-value of the ship
+	hockeyPlayer2.y = hockeyPlayer2.y + scrollSpeed
+	-- change the transparency so that it becomes gradually visable
+	hockeyPlayer2.alpha = hockeyPlayer2.alpha + 0.01
 end
 
+-- MovehockeyPlayer2 will be called over and over again
+Runtime:addEventListener("enterFrame", MoveHockeyPlayer2)
 
 
--- SOUND
 
--- Hockey arena sound
-local hockeyGame = audio.loadSound( "Sounds/hockeyGame.mp3")
+-- Function: MovehockeyPlayer3
+-- Input: this function accepts an event listener
+-- Output:  none
+-- Description: this function adds the scroll speed to the x- value of the ship
+local function MoveHockeyPlayer3(event)
+	-- add the scroll speed to the x-value of the ship
+	hockeyPlayer3.x = hockeyPlayer3.x - scrollSpeed
+	hockeyPlayer3.y = hockeyPlayer3.y - scrollSpeed
+	-- change the transparency so that it becomes gradually visable
+	hockeyPlayer3.alpha = hockeyPlayer3.alpha + 0.01
+end
 
+-- MovehockeyPlayer1 will be called over and over again
+Runtime:addEventListener("enterFrame", MoveHockeyPlayer3)
 
+local function ScaleHockeyPuck(event)
+
+	-- Scale the image by 120% (x) and 50% (y)
+	hockeyPuck:scale( 1.0001, 1.0001 )
+end
+-- Call hockeyPuck over and over again
+Runtime:addEventListener("enterFrame", ScaleHockeyPuck)
