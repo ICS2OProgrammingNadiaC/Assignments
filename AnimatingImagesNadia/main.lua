@@ -107,7 +107,7 @@ Runtime:addEventListener("enterFrame", MoveHockeyPlayer3)
 local function ScaleHockeyPuck(event)
 
 	-- Scale the image by 120% (x) and 50% (y)
-	hockeyPuck:scale( 1.0001, 1.0001 )
+	hockeyPuck:scale( 1.01, 1.01 )
 end
 -- Call hockeyPuck over and over again
 Runtime:addEventListener("enterFrame", ScaleHockeyPuck)
