@@ -1,6 +1,7 @@
+
+-- Program: Animating Images
 -- Name: Nadia Coleman
 -- Class: ICS20
--- Date: 7/10/2018
 -- This program displays three shapes that move across the screen in different directions.
 -----------------------------------------------------------------------------------------
 
@@ -24,11 +25,14 @@ textObject = display.newText("Stanley Cup Final!", 500, 500, nil, 50)
 
 -- set the colour of the text
 textObject:setTextColor(180/255, 100/255, 90/255)
+
+-- add background with heigt and width 
+local backGroundImage = display.newImageRect("Images/hockeyArena.png", 2048, 1550)
+
 -- add characters with height and width
 local hockeyPlayer1 = display.newImageRect("Images/hockeyPlayer1.png", 250, 300)
 local hockeyPlayer2 = display.newImageRect("Images/hockeyPlayer2.png", 250, 300)
 local hockeyPlayer3 = display.newImageRect("Images/hockeyPlayer3.png", 250, 300)
-
 
 -- set the inital x and y postions of each player
 hockeyPlayer1.x = 70
@@ -40,14 +44,6 @@ hockeyPlayer2.y = 70
 hockeyPlayer3.x = display.contentWidth/1
 hockeyPlayer3.y = 150
 hockeyPlayer3.xScale = -1
-
-
-
-
-
-
-
-
 
 
 -- set the player to start transparent
