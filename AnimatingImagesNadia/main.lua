@@ -99,6 +99,9 @@ end
 -- MovehockeyPlayer1 will be called over and over again
 Runtime:addEventListener("enterFrame", MoveHockeyPlayer3)
 
+-- the puck will spin and rotate
+transition.to(hockeyPuck, {rotation=360, time=3500, onComplete=spinImage})
+transition.to(hockeyPuck, {x=500, y=500, time=3500})
 -- Function: ScaleHockeyPuck
 -- Input: this function also accepts an event listener
 local function ScaleHockeyPuck(event)
@@ -108,3 +111,4 @@ local function ScaleHockeyPuck(event)
 end
 -- Call hockeyPuck over and over again
 Runtime:addEventListener("enterFrame", ScaleHockeyPuck)
+
