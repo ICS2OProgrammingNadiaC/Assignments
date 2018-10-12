@@ -15,39 +15,34 @@ scrollSpeed = 3
 local backGroundImage = display.newImageRect("Images/hockeyArena.png", 2048, 1550)
 
 
--- create a local variable
-local textObject
-
--- set x, y locations of the text
-textObject = display.newText( "Stanley Cup Final!", 500, 500, nil, 50 )
-
--- set the colour of the text
-textObject:setTextColor(180/255, 100/255, 90/255)
-
 -- add background with heigt and width 
 local backGroundImage = display.newImageRect("Images/hockeyArena.png", 2048, 1550)
 
+-- create a local variable
+-- set x, y locations of the text
+local textObject = display.newText("Stanley Cup Final!", 500, 400, nil, 85)
+-- set the colour of the text
+textObject:setTextColor(0/255, 100/255, 90/255)
 -- add characters with height and width
 local hockeyPlayer1 = display.newImageRect("Images/hockeyPlayer1.png", 250, 300)
 local hockeyPlayer2 = display.newImageRect("Images/hockeyPlayer2.png", 250, 300)
 local hockeyPlayer3 = display.newImageRect("Images/hockeyPlayer3.png", 250, 300)
-local hockeyPuck = display.newImageRect("Images/hockeyPuck.png", 150, 200)
+local hockeyPuck = display.newImageRect("Images/hockeyPuck.png", 150, 150)
 
 -- set the inital x and y postions of each player
+-- set the x, y position of player 1
 hockeyPlayer1.x = 70
 hockeyPlayer1.y = display.contentHeight/2
-
+-- set the x, y position of player 2
 hockeyPlayer2.x = display.contentWidth/2
 hockeyPlayer2.y = 70
-
+-- set the x, y position of player 3
 hockeyPlayer3.x = 1024
 hockeyPlayer3.y = 756
 hockeyPlayer3.xScale = -1
-
+-- set the x, y position of the hockey puck
 hockeyPuck.x = 500
 hockeyPuck.y = 500
-
-
 
 -- set the player to start transparent
 hockeyPlayer1.alpha = 0
@@ -104,9 +99,11 @@ end
 -- MovehockeyPlayer1 will be called over and over again
 Runtime:addEventListener("enterFrame", MoveHockeyPlayer3)
 
+-- Function: ScaleHockeyPuck
+-- Input: this function also accepts an event listener
 local function ScaleHockeyPuck(event)
 
-	-- Scale the image by 120% (x) and 50% (y)
+	-- Scale the image by 101% (x) and 101% (y)
 	hockeyPuck:scale( 1.01, 1.01 )
 end
 -- Call hockeyPuck over and over again
