@@ -2,7 +2,8 @@
 -- Program: Animating Images
 -- Name: Nadia Coleman
 -- Class: ICS20
--- This program displays three shapes that move across the screen in different directions.
+-- Date: October 7th, 2018
+-- This program displays four shapes that move across the screen in different directions.
 -----------------------------------------------------------------------------------------
 
 -- hide the status bar
