@@ -88,7 +88,7 @@ Runtime:addEventListener("enterFrame", MoveHockeyPlayer2)
 -- Function: MovehockeyPlayer3
 -- Input: this function accepts an event listener
 -- Output:  none
--- Description: this function adds the scroll speed to the x- value of the ship
+-- Description: this function adds the scroll speed to the x- value of the ship 
 local function MoveHockeyPlayer3(event)
 	-- add the scroll speed to the x-value of the ship
 	hockeyPlayer3.x = hockeyPlayer3.x - scrollSpeed
