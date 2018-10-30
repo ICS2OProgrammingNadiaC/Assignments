@@ -29,10 +29,16 @@ settings =
 	--
 	iphone =
 	{
+<<<<<<< HEAD
+		xcassets = "Images.xcassets",
+=======
+>>>>>>> 87b1c530b8f8081d4507edb6bd1208fcc67d0196
 		plist =
 		{
 			UIStatusBarHidden = false,
 			UILaunchStoryboardName = "LaunchScreen",
+<<<<<<< HEAD
+=======
 			CFBundleIconFiles =
 			{
 				"Icon-40.png",
@@ -45,6 +51,7 @@ settings =
 				"Icon-167.png",
 				"Icon-180.png",
 			},
+>>>>>>> 87b1c530b8f8081d4507edb6bd1208fcc67d0196
 		},
 	},
 
@@ -62,7 +69,12 @@ settings =
 	excludeFiles =
 	{
 		-- Exclude unnecessary files for each platform
+<<<<<<< HEAD
+		all = { "Icon.png", "Icon-*dpi.png", "Images.xcassets", },
+		android = { "LaunchScreen.storyboardc", },
+=======
 		ios = { "Icon.png", "Icon-*dpi.png", },
 		android = { "Icon.png", "Icon-??.png", "Icon-???.png", "LaunchScreen.storyboardc", },
+>>>>>>> 87b1c530b8f8081d4507edb6bd1208fcc67d0196
 	},
 }
