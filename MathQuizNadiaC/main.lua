@@ -205,6 +205,10 @@ local function NumericFieldListener(event)
 			pointsObject.text = ( "Points = " .. numberPoints)
 			secondsLeft = totalSeconds
 			UpdateTime()
+			if (points == 5) then
+				youWin.isVisible = true
+				congrats.isVisible = true
+			end
 
 		
 			-- if the answer is incorrect
@@ -287,6 +291,16 @@ gameOver = display.newImageRect("Images/gameOver.png", display.contentWidth, dis
 gameOver.x = display.contentWidth * 1 / 2
 gameOver.y = display.contentHeight * 1 / 2
 gameOver.isVisible = false
+
+-- create youWin Image and make it invisible
+youWin = display.newImageRect("Images/youWin.png", display.contentWidth, display.contentHeight)
+youWin.x = display.contentWidth * 1 / 2
+youWin.y = display.contentHeight * 1 / 2
+youWin.isVisible = false
+
+-- create a you win text
+congratsText = display.newText ("Congrats! ", display.contentWidth/2, display.contentHeight *2, nil, 75)
+
 -----------------------------------------------------------------------------------
 -- FUNCTION CALLS
 -----------------------------------------------------------------------------------
