@@ -94,8 +94,6 @@ local function AskQuestion()
 		randomNumber1 = math.random(1, 20)
 		randomNumber2 = math.random(1, 20)
 
-		randomNumber1 > randomNumber2
-
  		correctAnswer = randomNumber1 - randomNumber2
  		-- create question in text object
 		questionObject.text = randomNumber1 .. " - " .. randomNumber2 .. " = "
@@ -144,14 +142,16 @@ local function DecreaseLives()
 	elseif (lives == 1) then
 
 		heart1.isVisible = false
-		gameOver.isVisible = true
-		numericField.isVisible = false
+		
 			
 	elseif (lives == 0) then
+		gameOver.isVisible = true
 		heart4.isVisible = false
 		heart3.isVisible = false
 		heart2.isVisible = false
 		heart1.isVisible = false
+		gameOver.isVisible = true
+		numericField.isVisible = false
 	end
 	lives = lives - 1
 end
@@ -164,6 +164,11 @@ local function UpdateTime()
 	clockText.text = " Time = " .. secondsLeft
 
 	if (secondsLeft == 0 ) then
+	-- cancel the timer and remove the fourth heart by making it invisible
+		-- update the hearts
+		DecreaseLives()
+		-- call the function to ask a new question
+		AskQuestion()
 		-- reset the number of seconds left 
 		secondsLeft = totalSeconds
 		lives = lives - 1
@@ -171,12 +176,8 @@ local function UpdateTime()
 		incorrectSoundChannel = audio.play(incorrectSound)
 		gameOver.isVisible = true
 		numericField.isVisible = false
-		-- cancel the timer and remove the fourth heart by making it invisible
-		-- update the hearts
-		DecreaseLives()
-		-- call the function to ask a new question
-		AskQuestion()
-
+	else
+		gameOver.isVisible = false
 	end
 end
 
