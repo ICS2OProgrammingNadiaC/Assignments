@@ -40,11 +40,10 @@ local clockText
 
 local countDownTimer
 
-local lives = 5
+local lives = 4
 local heart1
 local heart2
 local heart3
-local heart4
 local numericField
 
 
@@ -124,12 +123,7 @@ end
 
 local function DecreaseLives()
 	-- remove a heart every time the timer runs out
-	if (lives == 4) then
-
-		heart4.isVisible = false
-
-		-- remove one heart when the lives is 3
-	elseif (lives == 3) then
+	if (lives == 3) then
 
 		heart3.isVisible = false
 
@@ -251,11 +245,6 @@ heart2.y = display.contentHeight * 1 / 7
 heart3 = display.newImageRect("Images/heart.png", 100, 100)
 heart3.x = display.contentWidth * 5 / 8
 heart3.y = display.contentHeight * 1 / 7
-
-
-heart4 = display.newImageRect("Images/heart.png", 100, 100)
-heart4.x = display.contentWidth * 4 / 8
-heart4.y = display.contentHeight * 1 / 7
 
 -- displays a question and sets it colour
 questionObject = display.newText( "", display.contentWidth/3, display.contentHeight/2, nil, 50 )
