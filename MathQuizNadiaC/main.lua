@@ -164,11 +164,6 @@ local function UpdateTime()
 	clockText.text = " Time = " .. secondsLeft
 
 	if (secondsLeft == 0 ) then
-	-- cancel the timer and remove the fourth heart by making it invisible
-		-- update the hearts
-		DecreaseLives()
-		-- call the function to ask a new question
-		AskQuestion()
 		-- reset the number of seconds left 
 		secondsLeft = totalSeconds
 		lives = lives - 1
@@ -176,6 +171,11 @@ local function UpdateTime()
 		incorrectSoundChannel = audio.play(incorrectSound)
 		gameOver.isVisible = true
 		numericField.isVisible = false
+		-- cancel the timer and remove the fourth heart by making it invisible
+		-- update the hearts
+		DecreaseLives()
+		-- call the function to ask a new question
+		AskQuestion()
 	else
 		gameOver.isVisible = false
 	end
@@ -272,7 +272,7 @@ incorrectObject:setTextColor(190/255, 20/255, 200/255)
 incorrectObject.isVisible = false
 
 -- create numeric field
-numericField = native.newTextField( display.contentWidth/2, display.contentHeight/2, 150, 80 )
+numericField = native.newTextField( display.contentWidth/1.3, display.contentHeight/2, 150, 80 )
 numericField.inputType = "default"
 -- add the event listener for the numeric field
 numericField:addEventListener( "userInput", NumericFieldListener )
@@ -299,7 +299,8 @@ youWin.y = display.contentHeight * 1 / 2
 youWin.isVisible = false
 
 -- create a you win text
-congratsText = display.newText ("Congrats! ", display.contentWidth/2, display.contentHeight *2, nil, 75)
+congrats = display.newText ("Congrats! ", display.contentWidth/2, display.contentHeight *2, nil, 75)
+congrats:setTextColor( 100/255, 200/255, 13/255 )
 
 -----------------------------------------------------------------------------------
 -- FUNCTION CALLS
@@ -309,5 +310,3 @@ congratsText = display.newText ("Congrats! ", display.contentWidth/2, display.co
 AskQuestion()
 
 StartTimer()
-
-DecreaseLives()
