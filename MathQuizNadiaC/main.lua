@@ -1,4 +1,3 @@
-
 -- Title: Math Quiz
 -- Name: Nadia Coleman
 -- Course: ICS20
@@ -40,7 +39,7 @@ local clockText
 
 local countDownTimer
 
-local lives = 4
+local lives = 3
 local heart1
 local heart2
 local heart3
@@ -93,14 +92,20 @@ local function AskQuestion()
 		randomNumber1 = math.random(1, 20)
 		randomNumber2 = math.random(1, 20)
 
- 		correctAnswer = randomNumber1 - randomNumber2
+		correctAnswer = randomNumber1 - randomNumber2
  		-- create question in text object
 		questionObject.text = randomNumber1 .. " - " .. randomNumber2 .. " = "
 
 	elseif (randomOperator == 4) then
-		randomNumber1 = math.random(1, 100)
-		randomNumber2 = math.random(1, 100)
+		randomNumber1 = math.random(1, 10)
+		randomNumber2 = math.random(1, 10)
 		correctAnswer = randomNumber1 / randomNumber2
+		
+		temp = randomNumber1 * randomNumber2
+		randomnumber2 = randomNumber1
+		temp = randomNumber2
+		
+
 		-- create the question in a text object
 		questionObject.text = randomNumber1 .. " / " .. randomNumber2
 
@@ -121,33 +126,39 @@ end
 
 
 
-local function DecreaseLives()
+local function DecreaseHearts()
 	-- remove a heart every time the timer runs out
 	if (lives == 3) then
 
-		heart3.isVisible = false
+		heart3.isVisible = true
+		heart2.isVisible = true
+		heart1.isVisible = true
+
 
 		-- remove another heart if lives is 2
 	elseif (lives == 2) then
 
-		heart2.isVisible = false
+		heart3.isVisible = false
+		heart2.isVisible = true
+		heart1.isVisible = true		
 
 		-- remove another heart if lives is 1
 	elseif (lives == 1) then
 
-		heart1.isVisible = false
-		
+		heart3.isVisible = false
+		heart2.isVisible = false
+		heart1.isVisible = true
 			
 	elseif (lives == 0) then
-		gameOver.isVisible = true
-		heart4.isVisible = false
+
 		heart3.isVisible = false
 		heart2.isVisible = false
 		heart1.isVisible = false
-		gameOver.isVisible = true
 		numericField.isVisible = false
+		gameOver.isVisible = true
+		
 	end
-	lives = lives - 1
+	--lives = lives - 1
 end
 
 local function UpdateTime()
@@ -163,15 +174,17 @@ local function UpdateTime()
 		lives = lives - 1
 		-- if there are no lives left, play a lose sound and display a lose image.
 		incorrectSoundChannel = audio.play(incorrectSound)
-		gameOver.isVisible = true
-		numericField.isVisible = false
 		-- cancel the timer and remove the fourth heart by making it invisible
 		-- update the hearts
-		DecreaseLives()
-		-- call the function to ask a new question
-		AskQuestion()
-	else
-		gameOver.isVisible = false
+		DecreaseHearts()
+
+		if ( lives == 0) then
+			gameOver.isVisible = true
+		else
+			-- call the function to ask a new question
+			AskQuestion()
+		end
+	
 	end
 end
 
@@ -198,13 +211,17 @@ local function NumericFieldListener(event)
 			numberPoints = numberPoints + 1
 			pointsObject.text = ( "Points = " .. numberPoints)
 			secondsLeft = totalSeconds
-			UpdateTime()
-			if (points == 5) then
+
+			if (numberPoints == 5) then
+
 				youWin.isVisible = true
-				congrats.isVisible = true
+				congratsObject.isVisible = true
+				numericField.isVisible = false
+				heart3.isVisible = false
+				heart2.isVisible = false
+				heart1.isVisible = false
 			end
 
-		
 			-- if the answer is incorrect
 		else 
 			--play an incorrect sound
@@ -214,9 +231,9 @@ local function NumericFieldListener(event)
 			timer.performWithDelay( 2000, HideIncorrect )
 			
 			-- remove a life if the users answer is incorrect
-			DecreaseLives()
+			lives = lives - 1
+			DecreaseHearts()
 			secondsLeft = totalSeconds
-			UpdateTime()
 			
 		end
 		-- clear text field
@@ -250,15 +267,16 @@ heart3.y = display.contentHeight * 1 / 7
 questionObject = display.newText( "", display.contentWidth/3, display.contentHeight/2, nil, 50 )
 questionObject:setTextColor(130/255, 200/255, 3/255)
 
--- create the correct text object and make it invisable
+-- create the correct text object and make it invisible
 correctObject = display.newText( "Correct!", display.contentWidth/2, display.contentHeight*2/3, nil, 50 )
 correctObject:setTextColor(130/255, 30/255, 243/255)
 correctObject.isVisible = false
 
--- create the incorrect text object and make it invisable
-incorrectObject = display.newText( "Incorrect, try again!", display.contentWidth/2, display.contentHeight*2/3, nil, 50 )
+-- create the incorrect text object and make it invisible
+incorrectObject = display.newText( "Incorrect, the answer is ", display.contentWidth/2, display.contentHeight*2/3, nil, 50 )
 incorrectObject:setTextColor(190/255, 20/255, 200/255)
 incorrectObject.isVisible = false
+
 
 -- create numeric field
 numericField = native.newTextField( display.contentWidth/1.3, display.contentHeight/2, 150, 80 )
@@ -277,19 +295,24 @@ clockText:setTextColor( 149/255, 89/255, 100/255 )
 
 -- create gameOver image and make it invisible
 gameOver = display.newImageRect("Images/gameOver.png", display.contentWidth, display.contentHeight)
-gameOver.x = display.contentWidth * 1 / 2
-gameOver.y = display.contentHeight * 1 / 2
+-- set the height and width
+gameOver.x = display.contentWidth * 1/2
+gameOver.y = display.contentHeight * 1/2
 gameOver.isVisible = false
 
 -- create youWin Image and make it invisible
 youWin = display.newImageRect("Images/youWin.png", display.contentWidth, display.contentHeight)
-youWin.x = display.contentWidth * 1 / 2
-youWin.y = display.contentHeight * 1 / 2
+-- set the youWin's height and width
+youWin.x = display.contentWidth * 1/2
+youWin.y = display.contentHeight * 1/2
+-- make the youWin invisible
 youWin.isVisible = false
 
--- create a you win text
-congrats = display.newText ("Congrats! ", display.contentWidth/2, display.contentHeight *2, nil, 75)
-congrats:setTextColor( 100/255, 200/255, 13/255 )
+-- create the congrars text object and make it invisible
+congratsObject = display.newText( "Congrats!", display.contentWidth/2, display.contentHeight*2/3, nil, 50 )
+congratsObject:setTextColor(190/255, 20/255, 200/255)
+congratsObject.isVisible = false
+
 
 -----------------------------------------------------------------------------------
 -- FUNCTION CALLS
@@ -297,5 +320,5 @@ congrats:setTextColor( 100/255, 200/255, 13/255 )
 
 -- call the function to ask the question
 AskQuestion()
-
+-- call the function to start the timer
 StartTimer()
