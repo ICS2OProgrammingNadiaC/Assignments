@@ -182,6 +182,7 @@ local function DecreaseHearts()
 		numericField.isVisible = false
 		-- display the gameOver
 		gameOver.isVisible = true
+		timer.cancel(countDownTimer)
 	end
 end
 
@@ -200,13 +201,12 @@ local function UpdateTime()
 		incorrectSoundChannel = audio.play(incorrectSound)
 		-- update the hearts
 		DecreaseHearts()
-		-- tell the user the correct answer
-		incorrectObject.text = "Incorrect, the answer was " .. correctAnswer	
 
 		if ( lives == 0) then
 			-- display the gameOver image if lives = 0 and the seconds left = 0
 			gameOver.isVisible = true
 			youLoseSoundChannel = audio.play(youLoseSound)
+			timer.cancel(countDownTimer)
 		else
 			-- call the function to ask a new question
 			AskQuestion()
