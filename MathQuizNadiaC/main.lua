@@ -8,7 +8,7 @@
 display.setStatusBar(display.HiddenStatusBar)
 
 -- Sets the background colour
-display.setDefault("background", 12/255, 237/255, 242/255)
+local backgroundImage = display.newImageRect("Images/background.png", 2048, 1536)
 
 -------------------------------------------------------------------------------------
 -- LOCAL VARIABLES
@@ -44,8 +44,6 @@ local heart1
 local heart2
 local heart3
 local numericField
-
-
 -------------------------------------------------------------------------------------
 -- SOUNDS
 -------------------------------------------------------------------------------------
