@@ -200,6 +200,8 @@ local function UpdateTime()
 		incorrectSoundChannel = audio.play(incorrectSound)
 		-- update the hearts
 		DecreaseHearts()
+		-- tell the user the correct answer
+		incorrectObject.text = "Incorrect, the answer was " .. correctAnswer	
 
 		if ( lives == 0) then
 			-- display the gameOver image if lives = 0 and the seconds left = 0
