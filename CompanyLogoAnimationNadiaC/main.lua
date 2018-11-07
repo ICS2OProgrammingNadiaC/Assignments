@@ -5,4 +5,3 @@
 ----------------------------------------------------------------------------------------------------------------------
 
 -- hide the status bar
-display.setStatusBar(display.setHiddenStatusBar)
