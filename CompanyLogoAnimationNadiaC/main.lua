@@ -1,7 +1,8 @@
------------------------------------------------------------------------------------------
---
--- main.lua
---
------------------------------------------------------------------------------------------
+-- Name: Company logo animation
+-- Course: ICS20
+-- By: Nadia Coleman
+-- this program animates the company logo
+----------------------------------------------------------------------------------------------------------------------
 
--- Your code here
+-- hide the status bar
+display.setStatusBar(display.setHiddenStatusBar)
