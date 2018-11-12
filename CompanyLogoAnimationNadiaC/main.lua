@@ -28,9 +28,12 @@ local function ScaleCompanyLogo(event)
 	-- scale the image by 101% (X) and 101% (Y)
 	companyLogo:scale( 1.01, 1.01 )
 end
-	-- make the logo spin and rotate
-	transition.to(companyLogo, {rotation=360, time=3000, onComplete=spinImage})
-	transition.to(companyLogo, {x=500, y=500, time=3000})
+
+
+-- make the logo spin and rotate
+transition.to(companyLogo, {rotation=360, time=3000, onComplete=spinImage})
+transition.to(companyLogo, {x=500, y=500, time=3000})
+
 -- call the companyLogo again and again
 Runtime:addEventListener("enterFrame", ScaleCompanyLogo)
 
