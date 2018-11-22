@@ -46,7 +46,7 @@ end
 -- Input: this function also accepts an event listener
 local function ScaleTextObject(event)
 
-	-- scale the image by 102% (X) and 102% (Y)
+	-- scale the image by 102.5% (X) and 102% (Y)
 	textObject:scale( 1.025, 1.02 )
 	-- change the transparency of the text every time it moves so that it fades in
 	textObject.alpha = textObject.alpha + 0.01
@@ -57,7 +57,7 @@ end
 -- make the logo spin and rotate
 transition.to(companyLogo, {rotation=360, time=3000, onComplete=spinImage})
 transition.to(companyLogo, {x=500, y=500, time=3000})
-
+0
 -- make the text grow
 transition.to(textObject, {x=500, y=500, time=3000})
 
