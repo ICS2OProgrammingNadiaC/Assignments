@@ -28,6 +28,8 @@ sceneName = "splash_screen"
 -- Creating Scene Object
 local scene = composer.newScene( sceneName )
 
+
+
 -----------------------------------------------------------------------------------------
 -- SOUNDS
 -----------------------------------------------------------------------------------------
@@ -62,6 +64,9 @@ function scene:create( event )
     -- Creating a group that associates objects with the scene
     local sceneGroup = self.view
 
+        -- set the background colour
+    display.setDefault ("background", 132/255, 119/255, 254/255)
+
     -----------------------------------------------------------------------------------------
     -- BACKGROUND IMAGE & STATIC OBJECTS
     -----------------------------------------------------------------------------------------
@@ -71,43 +76,30 @@ function scene:create( event )
     -- set the company logo Y
     companyLogo.y = 500
 
-    -- set the background colour
-    display.setDefault ("background", 132/255, 119/255, 254/255)
-
-    textObject = display.newText( "Pyramid Software", 500, 300, nil, 100)
-
-    -- sets the color of the text
-    textObject:setTextColor(155/255, 42/255, 198/255)
-    -- set the text to be transparent
-    textObject.alpha = 0
-
-
-
-   
-
-    
-
-
-    -----------------------------------------------------------------------------------------
-
     -- Associating button widgets with this scen
     sceneGroup:insert( companyLogo )
     
-    -- INSERT INSTRUCTIONS BUTTON INTO SCENE GROUP
+
 
 end -- function scene:create( event )   
 
 
 local function ScaleLogo()
     companyLogo:scale(1.01, 1.01)
-    -- make the logo spin and rotate
-    transition.to(companyLogo, {rotation=360, time=3000, onComplete=spinImage})
+
+   
+    -- Call the scaleCompanyLogo function as soon as we enter the frame.
+    
+end
+
+local function GrowCompanyLogo()
+    
     transition.to(companyLogo, {x=500, y=500, time=3000})
 
-    -- make the text grow
-    transition.to(textObject, {x=500, y=500, time=3000})
 end
------------------------------------------------------------------------------------------
+
+
+----------------------------------------------------------------------------------
 
 -- The function called when the scene is issued to appear on screen
 function scene:show( event )
@@ -125,14 +117,18 @@ function scene:show( event )
     if ( phase == "will" ) then
        
     -----------------------------------------------------------------------------------------
-    ScaleLogo()
+    
 
 
 
     -- Called when the scene is now on screen.
     -- Insert code here to make the scene come alive.
     -- Example: start timers, begin animation, play audio, etc.
-    elseif ( phase == "did" ) then       
+    elseif ( phase == "did" ) then      
+
+        Runtime:addEventListener("enterFrame", ScaleLogo) 
+
+        transition.to(companyLogo, {rotation=360, time=3000, onComplete=spinImage})
     
 
     end

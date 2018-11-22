@@ -56,6 +56,9 @@ local function ScaleCompanyLogo(event)
     companyLogo:scale( 1.01, 1.01 )
     -- change the transparency of the ship every time it moves so that it fades in
     companyLogo.alpha = companyLogo.alpha + 0.01
+
+    transition.to(companyLogo, {rotation=360, time=3000, onComplete=spinImage})
+    transition.to(companyLogo, {x=500, y=500, time=3000})
 end
 
 -- Function: ScaleTextObject
@@ -66,7 +69,11 @@ local function ScaleTextObject(event)
     textObject:scale( 1.025, 1.02 )
     -- change the transparency of the text every time it moves so that it fades in
     textObject.alpha = textObject.alpha + 0.01
+    -- make the text grow
+    transition.to(textObject, {x=500, y=500, time=3000})
 end
+
+
 -----------------------------------------------------------------------------------------
 -- GLOBAL SCENE FUNCTIONS
 -----------------------------------------------------------------------------------------
