@@ -49,7 +49,9 @@ local companyLogo
 -----------------------------------------------------------------------------------------
 -- LOCAL FUNCTIONS
 -----------------------------------------------------------------------------------------
-
+local function gotoMainMenu ()
+    composer.gotoScene( "main_menu" )
+end
   
 
 -- INSERT LOCAL FUNCTION DEFINITION THAT GOES TO INSTRUCTIONS SCREEN 
@@ -86,7 +88,7 @@ end -- function scene:create( event )
 
 local function ScaleLogo()
     companyLogo:scale(1.01, 1.01)
-
+    timer.performWithDelay( 3000, gotoMainMenu )
    
     -- Call the scaleCompanyLogo function as soon as we enter the frame.
     
@@ -95,6 +97,7 @@ end
 local function GrowCompanyLogo()
     
     transition.to(companyLogo, {x=500, y=500, time=3000})
+    timer.performWithDelay( 3000, gotoMainMenu )
 
 end
 
