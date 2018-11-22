@@ -98,6 +98,8 @@ local function GrowCompanyLogo()
     
     transition.to(companyLogo, {x=500, y=500, time=3000})
     timer.performWithDelay( 3000, gotoMainMenu )
+    companyLogo.isVisible = false
+    background.isVisible = false
 
 end
 
