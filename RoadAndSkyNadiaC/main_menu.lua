@@ -36,6 +36,7 @@ local bkg_image
 local playButton
 local creditsButton
 local backButton
+local instructionsButton
 
 -----------------------------------------------------------------------------------------
 -- LOCAL FUNCTIONS
@@ -52,6 +53,14 @@ end
 local function Level1ScreenTransition( )
     composer.gotoScene( "level1_screen", {effect = "zoomInOutFade", time = 1000})
 end    
+
+
+-----------------------------------------------------------------------------------------
+
+-- Creating Transition to Instructions Screen
+local function InstructionsScreenTransition( )
+    composer.gotoScene( "instructions_screen", {effect = "zoomInOutFade", time = 1000})
+end 
 
 -- INSERT LOCAL FUNCTION DEFINITION THAT GOES TO INSTRUCTIONS SCREEN 
 
@@ -122,6 +131,24 @@ function scene:create( event )
             -- When the button is released, call the Credits transition function
             onRelease = CreditsTransition
         } ) 
+    -----------------------------------------------------------------------------------------
+
+    -- Creating Instructions Button
+    instructionsButton = widget.newButton( 
+        {   
+            -- Set its position on the screen relative to the screen size
+            x = display.contentWidth/4,
+            y = display.contentHeight*7/8,
+            width = 200,
+            height = 200,
+
+            -- Insert the images here
+            defaultFile = "Images/InstructionsButtonUnpressed.png",
+            overFile = "Images/InstructionsButtonPressed.png",
+
+            -- When the button is released, call the Level1 screen transition function
+            onRelease = InstructionsScreenTransition          
+        } )
     
     -- ADD INSTRUCTIONS BUTTON WIDGET
 
@@ -130,6 +157,7 @@ function scene:create( event )
     -- Associating button widgets with this scene
     sceneGroup:insert( playButton )
     sceneGroup:insert( creditsButton )
+    sceneGroup:insert( instructionsButton )
     
     -- INSERT INSTRUCTIONS BUTTON INTO SCENE GROUP
 
