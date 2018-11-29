@@ -120,7 +120,7 @@ function scene:show( event )
        
     -----------------------------------------------------------------------------------------
     
-
+    baclgroundSoundChannel = audio.play(backgroundSound)
 
 
     -- Called when the scene is now on screen.
@@ -133,8 +133,6 @@ function scene:show( event )
         transition.to(companyLogo, {rotation=360, time=3000, onComplete=spinImage})
 
         timer.performWithDelay( 3000, gotoMainMenu )
-
-
     end
 
 end -- function scene:show( event )
@@ -157,7 +155,6 @@ function scene:hide( event )
         -- Called when the scene is on screen (but is about to go off screen).
         -- Insert code here to "pause" the scene.
         -- Example: stop timers, stop animation, stop audio, etc.
-
 
     -----------------------------------------------------------------------------------------
 

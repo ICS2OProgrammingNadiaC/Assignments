@@ -35,7 +35,6 @@ local scene = composer.newScene( sceneName )
 local bkg_image
 local playButton
 local creditsButton
-local backButton
 local instructionsButton
 
 -----------------------------------------------------------------------------------------
@@ -51,7 +50,7 @@ end
 
 -- Creating Transition to Level1 Screen
 local function Level1ScreenTransition( )
-    composer.gotoScene( "level1_screen", {effect = "zoomInOutFade", time = 1000})
+    composer.gotoScene( "level1_screen", {effect = "slideLeft", time = 1000})
 end    
 
 
@@ -102,8 +101,8 @@ function scene:create( event )
             -- Set its position on the screen relative to the screen size
             x = display.contentWidth/2,
             y = display.contentHeight*7/8,
-            width = 200,
-            height = 200,
+            width = 185,
+            height = 185,
 
             -- Insert the images here
             defaultFile = "Images/PlayButtonUnpressed@2x.png",
@@ -121,8 +120,8 @@ function scene:create( event )
             -- Set its position on the screen relative to the screen size
             x = display.contentWidth*7/8,
             y = display.contentHeight*7/8,
-            width = 200,
-            height = 200,
+            width = 185,
+            height = 185,
 
             -- Insert the images here
             defaultFile = "Images/CreditsButtonUnpressed.png",
@@ -137,10 +136,10 @@ function scene:create( event )
     instructionsButton = widget.newButton( 
         {   
             -- Set its position on the screen relative to the screen size
-            x = display.contentWidth/4,
+            x = display.contentWidth/4.5,
             y = display.contentHeight*7/8,
             width = 200,
-            height = 200,
+            height = 150,
 
             -- Insert the images here
             defaultFile = "Images/InstructionsButtonUnpressed.png",
