@@ -67,7 +67,7 @@ function scene:create( event )
     -- Creating a group that associates objects with the scene
     local sceneGroup = self.view
 
-        -- set the background colour
+    -- set the background colour
     display.setDefault ("background", 132/255, 119/255, 254/255)
 
     -----------------------------------------------------------------------------------------
@@ -120,7 +120,7 @@ function scene:show( event )
        
     -----------------------------------------------------------------------------------------
     
-    baclgroundSoundChannel = audio.play(backgroundSound)
+    backgroundSoundChannel = audio.play(backgroundSound)
 
 
     -- Called when the scene is now on screen.

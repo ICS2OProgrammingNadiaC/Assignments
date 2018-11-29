@@ -6,6 +6,16 @@
 -- Description: This is the main menu, displaying the credits, instructions & play buttons.
 -----------------------------------------------------------------------------------------
 
+
+-----------------------------------------------------------------------------------------
+-- SOUNDS
+-----------------------------------------------------------------------------------------
+
+-- Background sound
+local backgroundSound = audio.loadSound( "Sounds/vehicle.mp3" )
+local backgroundSoundChannel
+
+
 -----------------------------------------------------------------------------------------
 -- INITIALIZATIONS
 -----------------------------------------------------------------------------------------
@@ -148,8 +158,25 @@ function scene:create( event )
             -- When the button is released, call the Level1 screen transition function
             onRelease = InstructionsScreenTransition          
         } )
-    
-    -- ADD INSTRUCTIONS BUTTON WIDGET
+
+    -----------------------------------------------------------------------------------------
+
+    -- Creating Instructions Button
+    muteButton = widget.newButton( 
+        {   
+            -- Set its position on the screen relative to the screen size
+            x = display.contentWidth/1/8,
+            y = display.contentHeight*2/4,
+            width = 80,
+            height = 80,
+
+            -- Insert the images here
+            defaultFile = "Images/muteUnpressed.png",
+            overFile = "Images/mutePressed.png",
+
+            -- When the button is released, call the Level1 screen transition function
+            onRelease = audio.stop(backgroundSoundChannel)       
+        } )
 
     -----------------------------------------------------------------------------------------
 
@@ -157,12 +184,8 @@ function scene:create( event )
     sceneGroup:insert( playButton )
     sceneGroup:insert( creditsButton )
     sceneGroup:insert( instructionsButton )
-    
-    -- INSERT INSTRUCTIONS BUTTON INTO SCENE GROUP
-
+    sceneGroup:insert( muteButton )
 end -- function scene:create( event )   
-
-
 
 -----------------------------------------------------------------------------------------
 
@@ -180,6 +203,8 @@ function scene:show( event )
 
     -- Called when the scene is still off screen (but is about to come on screen).   
     if ( phase == "will" ) then
+
+        backgroundSoundChannel = audio.play(backgroundSound)
        
     -----------------------------------------------------------------------------------------
 
