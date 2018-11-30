@@ -53,7 +53,6 @@ local function gotoMainMenu ()
 end
   
 
-
 -- INSERT LOCAL FUNCTION DEFINITION THAT GOES TO INSTRUCTIONS SCREEN 
 
 -----------------------------------------------------------------------------------------
