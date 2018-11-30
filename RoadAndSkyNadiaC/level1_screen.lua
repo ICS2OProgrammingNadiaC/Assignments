@@ -1,8 +1,7 @@
 -----------------------------------------------------------------------------------------
---
 -- level1_screen.lua
--- Created by: Your Name
--- Date: Month Day, Year
+-- Created by: Nadia Coleman
+-- Date: November 26th, 2018
 -- Description: This is the level 1 screen of the game.
 -----------------------------------------------------------------------------------------
 

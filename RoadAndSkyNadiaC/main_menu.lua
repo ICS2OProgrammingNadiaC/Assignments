@@ -1,8 +1,8 @@
 -----------------------------------------------------------------------------------------
 --
 -- main_menu.lua
--- Created by: Your Name
--- Date: Month Day, Year
+-- Created by: Nadia Coleman
+-- Date: November 25th, 2018
 -- Description: This is the main menu, displaying the credits, instructions & play buttons.
 -----------------------------------------------------------------------------------------
 
@@ -15,6 +15,8 @@
 local backgroundSound = audio.loadSound( "Sounds/vehicle.mp3" )
 local backgroundSoundChannel
 
+local buttonSound = audio.loadSound( "Sounds/buttonPressed.mp3 ")
+local buttonSoundChannel
 
 -----------------------------------------------------------------------------------------
 -- INITIALIZATIONS
@@ -47,13 +49,14 @@ local playButton
 local creditsButton
 local instructionsButton
 
+local muteButton
 -----------------------------------------------------------------------------------------
 -- LOCAL FUNCTIONS
 -----------------------------------------------------------------------------------------
 
 -- Creating Transition Function to Credits Page
 local function CreditsTransition( )       
-    composer.gotoScene( "credits_screen", {effect = "flipFadeOutIn", time = 500})
+    composer.gotoScene( "credits_screen", {effect = "flipFadeOutIn", time = 500})    
 end 
 
 -----------------------------------------------------------------------------------------
@@ -118,10 +121,11 @@ function scene:create( event )
             defaultFile = "Images/PlayButtonUnpressed@2x.png",
             overFile = "Images/PlayButtonPressed@2x.png",
 
+            audio.stop(backgroundSoundChannel)  
             -- When the button is released, call the Level1 screen transition function
-            onRelease = Level1ScreenTransition          
+            onRelease = Level1ScreenTransition  
         } )
-
+    
     -----------------------------------------------------------------------------------------
 
     -- Creating Credits Button
@@ -137,8 +141,10 @@ function scene:create( event )
             defaultFile = "Images/CreditsButtonUnpressed.png",
             overFile = "Images/CreditsButtonPressed.png",
 
+            audio.stop(backgroundSoundChannel)
             -- When the button is released, call the Credits transition function
             onRelease = CreditsTransition
+            
         } ) 
     -----------------------------------------------------------------------------------------
 
@@ -155,6 +161,7 @@ function scene:create( event )
             defaultFile = "Images/InstructionsButtonUnpressed.png",
             overFile = "Images/InstructionsButtonPressed.png",
 
+            audio.stop(backgroundSoundChannel)
             -- When the button is released, call the Level1 screen transition function
             onRelease = InstructionsScreenTransition          
         } )

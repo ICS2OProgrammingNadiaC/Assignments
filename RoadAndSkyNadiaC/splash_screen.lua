@@ -3,7 +3,7 @@
 -- main_menu.lua
 -- Created by: Nadia Coleman
 -- Date: November 28th, 2018
--- Description: This is the main menu, displaying the credits, instructions & play buttons.
+-- Description: This is the splash screen, it displays the company logo animation.
 -----------------------------------------------------------------------------------------
 
 -----------------------------------------------------------------------------------------
@@ -44,7 +44,6 @@ local backgroundSoundChannel
 -----------------------------------------------------------------------------------------
 
 local companyLogo
-
 
 -----------------------------------------------------------------------------------------
 -- LOCAL FUNCTIONS

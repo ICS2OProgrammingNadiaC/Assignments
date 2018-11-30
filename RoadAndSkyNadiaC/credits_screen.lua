@@ -1,9 +1,9 @@
 -----------------------------------------------------------------------------------------
 --
 -- credits_screen.lua
--- Created by: Your Name
+-- Created by: Nadia Coleman
 -- Special thanks to Wal Wal for helping in the design of this framework.
--- Date: Month Day, Year
+-- Date: November 24th, 2018
 -- Description: This is the credits page, displaying a back button to the main menu.
 -----------------------------------------------------------------------------------------
 
