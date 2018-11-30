@@ -120,12 +120,11 @@ function scene:create( event )
             -- Insert the images here
             defaultFile = "Images/PlayButtonUnpressed@2x.png",
             overFile = "Images/PlayButtonPressed@2x.png",
-
-            audio.stop(backgroundSoundChannel)  
+  
             -- When the button is released, call the Level1 screen transition function
             onRelease = Level1ScreenTransition  
         } )
-    
+
     -----------------------------------------------------------------------------------------
 
     -- Creating Credits Button
@@ -141,7 +140,6 @@ function scene:create( event )
             defaultFile = "Images/CreditsButtonUnpressed.png",
             overFile = "Images/CreditsButtonPressed.png",
 
-            audio.stop(backgroundSoundChannel)
             -- When the button is released, call the Credits transition function
             onRelease = CreditsTransition
             
@@ -161,7 +159,6 @@ function scene:create( event )
             defaultFile = "Images/InstructionsButtonUnpressed.png",
             overFile = "Images/InstructionsButtonPressed.png",
 
-            audio.stop(backgroundSoundChannel)
             -- When the button is released, call the Level1 screen transition function
             onRelease = InstructionsScreenTransition          
         } )
